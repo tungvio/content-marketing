@@ -18,8 +18,6 @@ user-invocable: true
 - Khi muốn tối ưu trải nghiệm đọc, độ thu hút và tính thuyết phục.
 - Khi soạn thảo nội dung ngắn (post, email) hay dài (bài blog, video).
 
-*Xem thêm quy trình chi tiết trong [workflow.md](./workflow.md) nếu bạn cần hướng dẫn từng bước khi viết bài.*
-
 ## Tham khảo giáo án gốc
 
 Tài liệu bài học gốc (bắt buộc đọc trước hoặc kèm theo khi cần):
@@ -33,21 +31,19 @@ Tài liệu bài học gốc (bắt buộc đọc trước hoặc kèm theo khi 
 - [Bài 7: Thực chiến nội dung ngắn](./giao-an/7 Thực Chiến Nội Dung Ngắn (Short, Post, Email).md)
 - [Bài 8: Thực chiến nội dung dài](./giao-an/8 Thực Chiến Nội Dung Dài (Video Dài, Blog).md)
 
+## Bắt buộc tham khảo ví dụ mẫu (thư mục vi-du)
 
+Trước khi viết bất kỳ nội dung mới nào, **bắt buộc** phải đọc toàn bộ file trong thư mục `./vi-du/` để đồng bộ:
+
+- Giọng văn (nhịp câu, mức độ nhấn mạnh, cách dẫn dắt cảm xúc).
+- Cách viết (mở bài, triển khai vấn đề, chốt CTA).
+- Format trình bày (tiêu đề, phân đoạn, bullet, cách xuống dòng).
+
+Yêu cầu áp dụng: đầu ra mới phải bám sát phong cách và format của các file mẫu trong `vi-du`; không viết theo phong cách khác khi chưa có chỉ định riêng.
 
 ## Quy trình từng bước
 
-1. **Xác định đối tượng và mục tiêu**
-   - Họ là ai? Vấn đề lớn nhất của họ?
-   - Mục tiêu của bạn: giáo dục, thuyết phục, chuyển đổi?
-2. **Chọn định dạng** (ngắn hay dài) và kênh phân phối.
-3. **Lập dàn bài**: list ý chính theo thứ tự logic.
-4. **Viết bản nháp**: để ý công thức (PAS/AIDA) nếu phù hợp.
-5. **Biên tập gắt**: cắt phần thừa, xóa lấy đà, làm rõ câu.
-6. **Kiểm tra bài** với checklist:
-   - Mở bài có hấp dẫn?
-   - Mỗi đoạn phục vụ mục tiêu?
-   - CTA rõ ràng?
+*Xem chi tiết trong [workflow.md](./workflow.md)*
 
 ## Các lệnh kiểm tra nhanh (quick commands)
 
