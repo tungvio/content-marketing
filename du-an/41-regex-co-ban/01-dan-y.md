@@ -1,4 +1,4 @@
-Trang-thai: da-duyet
+Trang-thai: cho-duyet
 
 # Dàn Ý: Regex Cơ Bản — Hướng Dẫn Toàn Diện (Video Dài)
 
