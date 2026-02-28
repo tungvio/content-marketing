@@ -34,57 +34,6 @@ Tài liệu bài học gốc (bắt buộc đọc trước hoặc kèm theo khi 
 - [Bài 8: Thực chiến nội dung dài](./giao-an/8 Thực Chiến Nội Dung Dài (Video Dài, Blog).md)
 
 
-## Những nguyên tắc cốt lõi (tóm tắt bài 1–8)
-
-### Bài 1: Tư duy tôn trọng khán giả
-
-- Xuất bản là một đặc quyền, không phải điều hiển nhiên.
-- Ba trụ cột của nội dung giá trị: **Rõ ràng**, **Súc tích**, **Hữu ích**.
-- Thấu hiểu khán giả, đặt nhu cầu họ lên hàng đầu.
-- Mỗi câu phải có lợi cho người đọc; tránh làm phiền hoặc lãng phí thời gian.
-
-### Bài 2: Vào thẳng vấn đề
-
-- Xóa phần "lấy đà" trong bản nháp; đừng bắt người đọc chịu đựng
-  đoạn mở đầu dài.
-- Mở bài phải đưa độc giả ngay vào điểm chính.
-- Kiểm tra: cắt bỏ đoạn đầu, nội dung vẫn rõ ràng?
-
-### Bài 3: Tối ưu hóa trải nghiệm và ngôn từ
-
-- Người đọc trên web **quét** chứ không đọc từng chữ.
-- Đoạn và câu ngắn, từ đơn giản, nhiều khoảng trắng.
-- Dùng tiêu đề phụ, bullet, hình ảnh để phá vỡ khối văn bản.
-
-### Bài 4: Quy trình & công thức viết
-
-- Ghi nháp thoải mái, biên tập gắt gao.
-- Các công thức: AIDA, PAS, 4U, 3C… chọn theo mục tiêu.
-- Checklist sửa bài: rõ ràng, mạch lạc, logic, không thừa.
-
-### Bài 5: Tiêu đề thu hút
-
-- Tiêu đề phải giải quyết vấn đề hoặc hứa hẹn giá trị.
-- Dùng số, tính từ mạnh, câu hỏi, lợi ích cụ thể.
-- Thử 5-10 biến thể, chọn cái ngắn, rõ, gây tò mò.
-
-### Bài 6: Nghệ thuật kể chuyện (StoryBrand)
-
-- Khán giả là "anh hùng", sản phẩm/giải pháp là hướng dẫn.
-- Dẫn dắt theo cấu trúc: vấn đề – giải pháp – thành công.
-- Dấu hiệu nhỏ (ví dụ, câu chuyện mini) giúp ghi nhớ.
-
-### Bài 7: Nội dung ngắn
-
-- Post, email, tweet cần tập trung vào một thông điệp.
-- Tiêu đề, dòng mở, CTA rõ ràng.
-- Giữ < 280 chữ (hoặc theo quy định nền tảng), xóa phần lan man.
-
-### Bài 8: Nội dung dài
-
-- Cấu trúc rõ ràng: mở, thân, kết luận; dùng mục lục hoặc phân đoạn.
-- Phân bổ thời gian: nghiên cứu, nháp, biên tập, kiểm tra.
-- Xen kẽ ví dụ, minh hoạ, hình ảnh để duy trì nhịp độ đọc.
 
 ## Quy trình từng bước
 
