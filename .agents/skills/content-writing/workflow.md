@@ -48,6 +48,26 @@ Muc-tieu: ...
 Doi-tuong: ...
 ```
 
+### Quy ước trạng thái file
+
+Mỗi file nội dung (dàn ý, script, bài viết) **bắt buộc** phải có trường `Trang-thai` ở đầu file để theo dõi tiến độ giữa các phiên làm việc.
+
+**Các giá trị hợp lệ:**
+- `cho-duyet` — Nội dung đã hoàn thành, đang chờ người dùng xác nhận/duyệt.
+- `da-duyet` — Người dùng đã xác nhận, nội dung được chốt chính thức.
+
+**Vị trí đặt:** Dòng đầu tiên của file, trước tiêu đề.
+
+**Ví dụ:**
+```text
+Trang-thai: cho-duyet
+```
+
+**Quy tắc:**
+- Khi tạo file mới hoặc hoàn thành nội dung → gán `Trang-thai: cho-duyet`.
+- Khi người dùng xác nhận duyệt → cập nhật thành `Trang-thai: da-duyet`.
+- Khi mở phiên chat mới, đọc trường `Trang-thai` để biết tiến độ hiện tại của từng file.
+
 ### Quy ước `Loai-noi-dung`
 
 - `script-video-ngan`
