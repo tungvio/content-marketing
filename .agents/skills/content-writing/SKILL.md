@@ -49,6 +49,21 @@ Yêu cầu áp dụng: đầu ra mới phải bám sát phong cách và format c
 - Viết như đang trò chuyện với người đọc, không cứng nhắc sách vở.
 - Ưu tiên từ ngữ đời thường, dễ hiểu. Tránh thuật ngữ hàn lâm khi không cần thiết.
 
+## Nguyên tắc sư phạm: Giải thích từ đơn giản đến phức tạp
+
+Khi giải thích khái niệm hay công thức (đặc biệt với nội dung kỹ thuật), **không giải thích theo thứ tự xuất hiện trái sang phải**, mà giải thích **theo thứ tự học tự nhiên**:
+
+1. **Thứ nhất**: Các thành phần/ý tưởng **đơn giản nhất** (dễ hiểu, dễ hình dung).
+2. **Thứ hai**: Các thành phần **trung bình** (xây dựng trên kiến thức từ bước 1).
+3. **Thứ ba**: Các thành phần **phức tạp nhất** (yêu cầu hiểu rõ 2 bước trước).
+4. **Cuối cùng**: **Ghép lại** toàn bộ để thấy ý nghĩa toàn cảnh.
+
+**Ví dụ**: Khi giải thích Regex `/(?=.*[a-z])/`:
+- ❌ Sai: Giải thích `?=` (phức tạp) → `.*` (trung bình) → `[a-z]` (đơn giản) theo thứ tự trái sang phải.
+- ✅ Đúng: Giải thích `[a-z]` (đơn giản) → `.*` (trung bình) → `?=` (phức tạp) → rồi ghép lại thành `(?=.*[a-z])`.
+
+**Lợi ích**: Người học không bị overwhelm, từ từ hiểu từ dễ đến khó, tự động "nối điểm" khi bạn ghép lại → tạo cảm giác "aha!" thay vì "mê hoặc".
+
 ## Quy trình từng bước
 
 *Xem chi tiết trong [workflow.md](./workflow.md)*

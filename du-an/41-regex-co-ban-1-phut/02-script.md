@@ -57,13 +57,15 @@ Nhìn vào đây, bạn có thể nghĩ rằng đây là một mớ ký hiệu v
 
 Đầu tiên, ký hiệu `^` ở đầu, có nghĩa là: bắt đầu kiểm tra từ ký tự đầu tiên của chuỗi.
 
-Tiếp theo, cụm `(?=.*[a-z])`. Cụm này có 3 phần:
+Tiếp theo, cụm `(?=.*[a-z])`. Hãy bóc tách từng thành phần từ từ:
 
-- `?=` đơn giản là kiểm tra xem có hay không. Chuỗi `a1`, khi kiểm tra `(?=.*[a-z])`, nó tìm trong chuỗi xem có chữ thường không → tìm thấy `a` → "có, đạt". Nhưng kế tiếp, khi kiểm tra `(?=.*[A-Z])` (tìm chữ hoa), nó vẫn bắt đầu từ đầu chuỗi `a1` để tìm, chứ không bắt đầu từ giữa.
-- `.*` nghĩa là "bỏ qua bao nhiêu ký tự cũng được". Ví dụ chuỗi `Abc123!@` có 8 ký tự. Dấu `.*` cho phép bạn lướt qua tất cả chúng để tìm thứ bạn cần. Dấu `.` là "một ký tự bất kỳ", dấu `*` là "bao nhiêu lần cũng được".
-- `[a-z]` nghĩa là "một chữ cái thường bất kỳ, từ a đến z". Ví dụ `[a-z]` sẽ khớp với `b`, `c`, `x`… nhưng không khớp với `A`, `3` hay `!`.
+Thứ nhất, `[a-z]` đơn giản nhất: "một chữ cái thường bất kỳ, từ a đến z". Ví dụ `[a-z]` sẽ khớp với `b`, `c`, `x`… nhưng không khớp với `A`, `3` hay `!`.
 
-Ghép cả cụm lại: "Nhìn xuyên suốt chuỗi, kiểm tra xem có ít nhất 1 chữ thường hay không."
+Thứ hai, `.*` nghĩa là "bỏ qua bao nhiêu ký tự cũng được". Dấu `.` là "một ký tự bất kỳ", dấu `*` là "bao nhiêu lần cũng được". Ví dụ chuỗi `Abc123!@` có 8 ký tự, dấu `.*` cho phép bạn lướt qua tất cả chúng để tìm thứ bạn cần.
+
+Thứ ba, `?=` đơn giản là kiểm tra xem có hay không, mà không "tiêu thụ" ký tự nào. Chuỗi `a1`, khi kiểm tra `(?=.*[a-z])`, nó lướt qua (`.*`) tìm chữ thường (`[a-z]`) → tìm thấy `a` → "có, đạt". Nhưng kế tiếp, khi kiểm tra `(?=.*[A-Z])` (tìm chữ hoa), nó vẫn bắt đầu từ đầu chuỗi `a1` để tìm, chứ không bắt đầu từ vị trí trước đó.
+
+Ghép cả cụm lại: `(?=.*[a-z])` = "Tìm xuyên suốt chuỗi xem có chữ thường hay không, nhưng không tiêu mất ký tự nào."
 
 Tương tự, `(?=.*[A-Z])` kiểm tra có ít nhất 1 chữ hoa.
 
