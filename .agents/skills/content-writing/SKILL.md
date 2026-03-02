@@ -4,8 +4,7 @@ description: >
   Hướng dẫn toàn diện về tư duy và kỹ thuật viết nội dung.
   Áp dụng khi bạn cần xây dựng chiến lược nội dung, viết blog, email,
   bài đăng mạng xã hội, hoặc kịch bản video. Từ tư duy cốt lõi đến
-  công thức viết, tiêu đề, kể chuyện, nội dung ngắn và dài. Từ khoá: tư duy,
-  ngắn gọn, minh bạch, PAS, AIDA, CTA.
+  công thức viết, tiêu đề, kể chuyện, nội dung video ngắn và video dài. Từ khoá: tư duy, ngắn gọn, rõ ràng.
 user-invocable: true
 ---
 
@@ -13,7 +12,7 @@ user-invocable: true
 
 ## Khi nào sử dụng kỹ năng này
 
-- Khi bạn cần viết nội dung có chuyển đổi (blog, email, social).
+- Khi bạn cần viết nội dung có chuyển đổi (video ngắn, video dài, blog, email, social).
 - Khi cần xác định tư duy, đối tượng và mục tiêu trước khi viết.
 - Khi muốn tối ưu trải nghiệm đọc, độ thu hút và tính thuyết phục.
 - Khi soạn thảo nội dung ngắn (post, email, video ngắn tối đa 3 phút) hay dài (bài blog, video dài).

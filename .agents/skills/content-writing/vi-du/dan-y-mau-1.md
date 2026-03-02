@@ -46,10 +46,3 @@
 - Gửi bài này cho một người bạn cũng đang học lập trình để cùng thoát phụ thuộc và tiến bộ bền vững.
 
 ---
-
-## Checklist dùng nhanh trước khi viết script
-
-- [ ] Đã nêu rõ vấn đề ngoại tại (thực tế + hậu quả).
-- [ ] Đã khơi đúng vấn đề nội tại (cảm xúc + niềm tin sai).
-- [ ] Đã đưa giải pháp 2 giai đoạn (logic trước, AI sau).
-- [ ] CTA rõ ràng, cụ thể, có hành động ngay.
