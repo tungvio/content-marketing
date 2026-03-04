@@ -30,7 +30,7 @@
 **Phần lấy từ:** Clip_02 (toàn bộ)
 
 **Hook & Tiêu đề:**
-- Hook (7 từ): *"Bỏ Qua JavaScript, Bạn Sẽ Bế Tắc Mãi"*
+- Hook: *"Tại Sao BẮT BUỘC Bạn Phải Học JavaScript - Đây Là Lý Do"*
 - Dài: `"Tại Sao JavaScript Là Chìa Khóa Của Lập Trình Web"`
 - Ngắn: `"JavaScript: Mọi Điều Bắt Đầu Từ Đây"`
 
