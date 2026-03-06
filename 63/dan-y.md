@@ -24,3 +24,20 @@
 ---
 
 ## PHẦN 2: VẤN ĐỀ KHI HỌC TẬP TRUNG
+
+### 1. Vấn đề ngoại tại
+
+- Khi học tập trung, nếu bị bận đột xuất (ốm, công việc, gia đình) → Phải nghỉ 1-2 buổi → lớp vẫn tiếp tục, không chờ bạn → CHậu quả là các buổi học tiếp theo, bạn sẽ không hiểu bài, cuối cùng là NẢN và BỎ CUỘC.
+- Vì vậy, có thể bạn phải học lại nhiều lần (tốn chi phí x2, x3) mới hoàn thành khóa học.
+- Khi lớp có từ 3 học viên trở lên, giảng viên bị hạn chế thời gian hỗ trợ (Mỗi người chỉ được ~5-6 phút). Nếu bạn gặp khó khăn riêng → GV không đủ thời gian hỗ trợ chi tiết.
+- Giảng viên dạy qua Slide & lý thuyết nhiều hơn là thực hành thực tế. Thiếu bài tập từ cơ bản đến nâng cao để rèn luyện kỹ năng → Bạn nghe hiểu lý thuyết nhưng chưa thể code được ("Học thụ động"). Kiến thức bên ngoài vẫn chưa trở thành kỹ của bạn.
+- Bài tập làm trong lớp chỉ là bài tập giả tưởng (academia), không phải project thực tế → Không thể tích lũy được kinh nghiệm làm việc.
+- Công nghệ (Framework/tool) lỗi thời, không còn đáp ứng được với nhu cầu tuyển dụng.
+
+### 2. Vấn đề nội tại
+
+- **Bất lực khi tự làm bài:** Nghe hiểu trên lớp nhưng về nhà không tự code được → Thiếu tự tin.
+- **Lo sợ bị bỏ lại phía sau:** Chỉ cần nghỉ 1-2 buổi là không theo kịp, dẫn tới cảm lo sợ và áp lực nặng nề.
+- **Mất tự tin vào năng lực bản thân:** Nghĩ mình “không hợp lập trình” chỉ vì không theo kịp mô hình học tập trung.
+- **Chán nản và muốn bỏ cuộc:** Học càng ngày càng “hụt hơi”.
+- **Lo lắng khi nghĩ đến đi làm thực tế:** Sợ vào môi trường thật sẽ không làm được việc vì thiếu kỹ năng code thực tế.
