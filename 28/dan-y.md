@@ -163,3 +163,118 @@ Từ một bug nhỏ, team mất thêm vài giờ chỉ để rollback và truy 
 - **Tóm tắt:** Formatting không chỉ để đẹp; nó giúp tránh đọc sai, hiểu sai và sửa sai.
 - **Viễn cảnh thành công:** Khi sự cố gấp xảy ra, team nhìn code là hiểu luồng ngay, fix đúng ngay lần đầu.
 - **Cầu nối sang clip sau:** Khi định dạng đã rõ ràng, bước tiếp theo là dùng comment thế nào cho đúng.
+---
+
+**Folder: Clip_05**
+
+## 5. Cách viết bình luận đúng cách trong mã nguồn (Comments)
+
+### Vấn đề ngoại tại (Tình huống)
+
+Khi viết code, có **2 vấn đề phổ biến** mà bạn sẽ thường xuyên bị mắc phải:
+
+**Vấn đề 1: Comment quá ít → Code trở nên khó hiểu**
+
+```jsx
+// Ham xu ly don hang
+function processOrder(o, i, d) {
+  const x = o.items.reduce((a, b) => a + b.price * b.qty, 0);
+  const y = x * (1 - (o.isMember ? 0.1 : 0));
+  if (y > d) return null;
+  return { ...o, total: y };
+}
+```
+
+Nhìn vào không rõ logic code là gì → Khó nâng cấp/sửa chữa.
+
+**Vấn đề 2: Comment dư thừa quá nhiều không cần thiết**
+
+```jsx
+// Ham xu ly don hang
+function processOrder(order, discount, maxBudget) {
+  // Tinh tong gia
+  const total = order.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+  // Kiem tra xem co phai thanh vien khong
+  // Neu la thanh vien thi giam gia 10%
+  // Tinh gia sau giam
+  const finalPrice = total * (1 - (order.isMember ? 0.1 : 0));
+  // Kiem tra xem gia co vuot ngan sach khong
+  if (finalPrice > maxBudget) return null;
+  // Tra ve don hang da xu ly
+  return { ...order, total: finalPrice };
+}
+```
+
+Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự giải thích và nhìn vào là hiểu ngay). Khi code đổi, comment dễ bị quên cập nhật và gây hiểu nhầm logic.
+
+**Kết quả:** Cả 2 cách đều gây khó khăn khi bảo trì và làm việc nhóm.
+
+### Vấn đề nội tại (Cảm xúc)
+
+**Cảm giác thường gặp:**
+
+- Sợ thiếu comment thì người sau không hiểu.
+- Sợ nhiều comment thì file dài, rối, khó bảo trì.
+- Thiếu tự tin, bối rối → Không chắc khi nào nên viết comment, khi nào nên không.
+
+### Giải pháp (Solution)
+
+**Dưới đây là 3 nguyên tắc viết comment ĐÚNG CÁCH nhất** để áp dụng ngay:
+
+- **Nguyên tắc 1 - Comment để giải thích "TẠI SAO", không giải thích "CÁI GÌ":**
+    - **Cái gì?** → Nói lại ý nghĩa logic code khi nhìn vào code thì dễ dàng nhận biết → dư thừa
+        
+        ```jsx
+        
+        // ❌ Comment lặp lại code — đọc code cũng biết điều này
+        // Kiểm tra đơn hàng có giá trên 500k hay không
+        if (order.total >= 500000) {
+          order.total = order.total * 0.93;
+        }
+        ```
+        
+    - **Tại sao?** Người đọc có thể tự đọc code để hiểu nó làm gì. Thứ họ không thể tự biết là nghiệp vụ logic đằng sau , tại sao logic lại vậy
+        
+        ```jsx
+        // ✅ Comment giải thích tại sao (điều code không nói được)
+        // Giảm 7% theo hợp đồng khuyến mãi Q1/2025 với đối tác logistics.
+        // Ngưỡng 500k là điều kiện tối thiểu theo thỏa thuận — không tự ý thay đổi.
+        if (order.total >= 500000) {
+          order.total = order.total * 0.93;
+        }
+        ```
+        
+- **Nguyên tắc 2 - Comment cảnh báo rủi ro:**
+    - Đánh dấu những đoạn có nguy cơ gây lỗi chương trình.
+    - **Làm thế nào?** Sử dụng từ khóa rõ ràng: `WARNING`.
+    - **Ví dụ JS (trước/sau):**
+        
+        ```jsx
+        // Trước: không có ngữ cảnh, dễ sửa nhầm
+        const fields = ['id', 'createdAt', 'email', 'name'];
+        
+        // Sau: cảnh báo lý do không được đổi
+        // WARNING: Không đổi thứ giá trị, script import CSV của kế toán đang đọc theo đúng vị trí cột này. Đổi thứ tự sẽ gây nhập sai dữ liệu mà không có lỗi báo.
+        const fields = ['id', 'createdAt', 'email', 'name'];
+        ```
+        
+- **Nguyên tắc 3 - Ưu tiên sửa tên biến/hàm trước khi thêm comment:**
+    - Nếu cần comment để "làm rõ" tên biến mơ hồ → hãy đổi tên biến. Tên tốt giúp code tự giải thích, giảm phụ thuộc vào comment.
+    - **Làm thế nào?** Refactor tên xấu (`x`, `tmp`, `doStuff`) thành tên có ý nghĩa nghiệp vụ rõ ràng hơn.
+    - **Ví dụ JS (trước/sau):**
+        
+        ```jsx
+        // Trước: comment chữa tên xấu
+        const u = userService.getById(id); // u là user
+        const x = calc(u); // x là điểm ưu tiên
+        
+        // Sau: không cần comment vẫn hiểu
+        const user = userService.getById(id);
+        const priorityScore = calculatePriorityScore(user);
+        ```
+        
+    
+    ### Kết clip
+    
+    - **Tóm tắt:** Comment tốt là comment đúng chỗ, đúng mục đích, và đúng bối cảnh.
+    - **Cầu nối sang clip sau:** Hiểu comment rồi, tiếp theo là tránh các lầm tưởng phổ biến về Clean Code.
