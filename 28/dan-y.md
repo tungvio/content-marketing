@@ -278,3 +278,81 @@ Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự
     
     - **Tóm tắt:** Comment tốt là comment đúng chỗ, đúng mục đích, và đúng bối cảnh.
     - **Cầu nối sang clip sau:** Hiểu comment rồi, tiếp theo là tránh các lầm tưởng phổ biến về Clean Code.
+
+---
+
+**Folder: Clip_06**
+
+## 6. Những lầm tưởng về Clean Code
+
+### **Niềm tin sai lệch phổ biến**
+
+1. **"Clean Code có nghĩa là code phải hoàn hảo 100% ở mọi khía cạnh"** → Sai. Clean Code là **sự cân bằng hợp lý** giữa tính dễ đọc, tính dễ bảo trì, và thời gian phát triển.
+    - **Ví dụ:** Dành 3 tiếng để đặt lại tên biến cho "hoàn hảo hơn" trong một function đang chạy ổn — không có bug, không có người khác đọc vào. Đây không phải Clean Code, đây là lãng phí thời gian.
+    - Clean Code là code đủ rõ để người khác hiểu và sửa được trong thời gian hợp lý — không phải code đẹp nhất về mặt lý thuyết.
+2. **"Viết Clean Code luôn tốn thêm thời gian"** → Sai. Ngắn hạn có thể chậm hơn một chút, nhưng **dài hạn tiết kiệm thời gian** vì ít phải sửa bug và bảo trì hơn.
+    - **Ví dụ:** Đặt tên biến rõ ràng thay vì `x`, `y`, `tmp` chỉ tốn thêm 30 giây khi viết. Nhưng 3 tháng sau, người khác (hoặc chính bạn) đọc lại đoạn code đó sẽ hiểu ngay thay vì mất 15 phút truy ngược logic.
+    - Chi phí viết clean code thường rất nhỏ; chi phí bảo trì code bẩn mới thực sự lớn và kéo dài.
+3. **"Clean Code chỉ quan trọng khi dự án lớn"** → Sai. Thói quen tốt được hình thành từ sớm, dù trên dự án nhỏ, giúp tránh nợ kỹ thuật tích lũy theo thời gian.
+    - **Ví dụ:** Một script nhỏ 50 dòng viết ẩu — tên biến mơ hồ, không có cấu trúc. Ban đầu chỉ mình dùng. Sau 6 tháng, script đó được tích hợp vào hệ thống lớn hơn. Lúc này muốn sửa thêm tính năng thì không ai dám đụng vào vì không ai hiểu nó làm gì.
+    - Dự án nhỏ hôm nay rất dễ trở thành một phần của hệ thống lớn ngày mai. Thói quen viết rõ ràng từ đầu sẽ tránh được vòng lặp "viết lại từ đầu" tốn kém hơn.
+
+### Giải pháp (Solution)
+
+**Dưới đây là 2 nguyên tắc THỰC TẾ nhất mà bạn có thể áp dụng ngay khi DEADLINE GẤP**
+
+- **Nguyên tắc 1 - Áp dụng "Clean Code tối thiểu" khi deadline gấp:**
+    - Khi deadline sát nút (dưới 8 tiếng), tập trung vào **3 ưu tiên cốt lõi**:
+        1. **Đặt tên rõ ràng** (hơn 80% thời gian làm việc với code là đọc, không phải viết).
+        2. **Tránh copy-paste code trùng lặp** → dùng function để tái sử dụng logic.
+        3. **Viết test cho những luồng quan trọng nhất** (không cần test hết, chỉ test những chỗ dễ xảy ra lỗi nhất).
+    - Ba điều này có **hiệu quả cao nhất trên từng phút bỏ ra**: tốn thêm ít thời gian nhưng ngăn được phần lớn bug và áp lực bảo trì về sau.
+    - **Ví dụ (trước/sau):**
+        
+        ```jsx
+        // ❌ Cách viết khi deadline gấp nhưng sai: tên biến mơ hồ, khó đọc lại
+        function p(o, d) {
+          const x = o.items.reduce((a, b) => a + b.p * b.q, 0);
+          if (x > d) return null;
+          return x;
+        }
+        
+        // ✅ Cách viết khi deadline gấp nhưng đúng: tên biến rõ ràng, cấu trúc dễ đọc
+        function calculateTotalPrice(order, maxBudget) {
+          const totalPrice = order.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+        
+          if (totalPrice > maxBudget) {
+            return null;
+          }
+        
+          return totalPrice;
+        }
+        // Test: chỉ kiểm tra logic giới hạn ngân sách, không cần test hết mọi trường hợp
+        ```
+        
+    - **Ghi chú:** Sau khi qua giai đoạn deadline, quay lại refactor thêm phần tối ưu, JSDoc, v.v.
+- **Nguyên tắc 2 - Hoàn trả nợ kỹ thuật đúng thời điểm:**
+    - Áp dụng chiến lược "hoàn trả nợ kỹ thuật" → ghi chú lại những phần viết tạm, sau đó dành thời gian hoàn thiện.
+    - Nợ kỹ thuật tích lũy dần dần sẽ khiến mã nguồn trở nên khó bảo trì và khó mở rộng sau này
+    - **Làm thế nào?**
+        1. Khi viết code tạm để kịp deadline, hãy **thêm TODO comment** ghi rõ việc cần làm.
+        2. Sau deadline 1–2 tuần, dành 4–8 tiếng để xử lý các TODO đó.
+        3. Không để nợ kỹ thuật kéo dài quá 1 thang1.
+    - **Ví dụ:**
+        
+        ```jsx
+        // TODO: Viết gấp để kịp deadline - cần tách thành 2 function riêng (kiểm tra thanh toán / tính giảm giá) + bổ sung unit test
+        function processOrderAndPayment(order, discount) {
+          // ... code tạm, nhưng hoạt động đúng
+          const total = order.total * (1 - discount);
+          const payment = initiatePayment(total);
+          // ...
+        }
+        ```
+
+### Kết clip
+
+- **Tóm tắt:** Clean Code không có nghĩa là hoàn hảo — mà là tìm được sự cân bằng giữa tính dễ bảo trì, tính khả thi, và thời gian phát triển thực tế.
+- **Bài học chính:** Áp dụng "Clean Code tối thiểu" khi gấp, sau đó "hoàn trả nợ kỹ thuật" khi có thời gian — giúp vừa đảm bảo tiến độ vừa giữ được chất lượng codebase lâu dài.
+- **Viễn cảnh thành công:** Khi cả team hiểu được sự cân bằng này, code vừa dễ đọc, deadline được đảm bảo, và mỗi người làm việc với ít áp lực hơn.
+- **Điểm cốt lõi:** Clean Code mà là một **quá trình cải thiện liên tục**, từng bước nhỏ, tích lũy dần → dẫn đến một mã nguồn vững chắc và bền vững theo thời gian.
