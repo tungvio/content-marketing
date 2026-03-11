@@ -6,7 +6,7 @@
 
 Tối thứ 6, ngay trước giờ release, production báo lỗi tính tiền sai. Bạn được giao hotfix trong 30 phút.
 
-Bạn mở đúng file cần sửa, nhưng đoạn `if/else` bị format lộn xộn: thụt lề không nhất quán, xuống dòng rối, block nhìn không rõ scope.
+Bạn nhanh chóng mở file code, cố tập trung dò từng dòng để hiểu chuyện gì đang xảy ra. Nhưng đoạn `if/else` bị format lộn xộn: thụt lề không nhất quán, xuống dòng rối, block nhìn không rõ scope.
 
 **Ví dụ JS (trước/sau):**
 
@@ -176,36 +176,51 @@ Khi viết code, có **2 vấn đề phổ biến** mà bạn sẽ thường xuy
 **Vấn đề 1: Comment quá ít → Code trở nên khó hiểu**
 
 ```jsx
-// Ham xu ly don hang
-function processOrder(o, i, d) {
-  const x = o.items.reduce((a, b) => a + b.price * b.qty, 0);
-  const y = x * (1 - (o.isMember ? 0.1 : 0));
-  if (y > d) return null;
-  return { ...o, total: y };
+function calculateShippingFee(order) {
+  const physicalItems = order.items.filter(item => item.type !== 'digital');
+
+  if (physicalItems.length === 0) return 0;
+
+  const totalWeight = physicalItems.reduce((sum, item) => sum + item.weight * item.qty, 0);
+  const baseFee = totalWeight <= 3 ? 25000 : 25000 + Math.ceil((totalWeight - 3) / 0.5) * 3000;
+
+  if (order.province === 'HCM' && order.shippingMethod === 'express') {
+    return baseFee * 1.5;
+  }
+
+  return baseFee;
 }
 ```
 
-Nhìn vào không rõ logic code là gì → Khó nâng cấp/sửa chữa.
+Tên biến rõ, đọc hiểu được từng dòng — nhưng không trả lời được: tại sao ngưỡng `3kg`? tại sao mỗi `0.5kg` thêm `3.000đ`? tại sao HCM express nhân `1.5`? Đây là quy định từ hợp đồng đơn vị vận chuyển, không thể tự suy ra. Thiếu comment, người sửa không biết con số đó từ đâu → dễ thay nhầm và vỡ SLA mà không có lỗi nào báo.
 
-**Vấn đề 2: Comment dư thừa quá nhiều không cần thiết**
+**Vấn đề 2: Comment dư thừa, chỉ nhắc lại những gì code đã nói**
 
 ```jsx
-// Ham xu ly don hang
-function processOrder(order, discount, maxBudget) {
-  // Tinh tong gia
-  const total = order.items.reduce((sum, item) => sum + item.price * item.qty, 0);
-  // Kiem tra xem co phai thanh vien khong
-  // Neu la thanh vien thi giam gia 10%
-  // Tinh gia sau giam
-  const finalPrice = total * (1 - (order.isMember ? 0.1 : 0));
-  // Kiem tra xem gia co vuot ngan sach khong
-  if (finalPrice > maxBudget) return null;
-  // Tra ve don hang da xu ly
-  return { ...order, total: finalPrice };
+// Tính phí vận chuyển
+function calculateShippingFee(order) {
+  // Lọc sản phẩm vật lý, bỏ qua sản phẩm số
+  const physicalItems = order.items.filter(item => item.type !== 'digital');
+
+  // Nếu không có sản phẩm vật lý thì phí là 0
+  if (physicalItems.length === 0) return 0;
+
+  // Tính tổng cân nặng của đơn hàng
+  const totalWeight = physicalItems.reduce((sum, item) => sum + item.weight * item.qty, 0);
+  // Tính phí vận chuyển dựa trên cân nặng
+  const baseFee = totalWeight <= 3 ? 25000 : 25000 + Math.ceil((totalWeight - 3) / 0.5) * 3000;
+
+  // Nếu là HCM và giao hàng nhanh thì nhân phí lên
+  if (order.province === 'HCM' && order.shippingMethod === 'express') {
+    return baseFee * 1.5;
+  }
+
+  // Trả về phí vận chuyển
+  return baseFee;
 }
 ```
 
-Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự giải thích và nhìn vào là hiểu ngay). Khi code đổi, comment dễ bị quên cập nhật và gây hiểu nhầm logic.
+Comment ở đây **dư thừa**: mỗi dòng chỉ diễn đạt lại đúng những gì code đã tự nói rõ. Vẫn không giải thích được tại sao `3kg`, `0.5kg`, hay `1.5` — các câu hỏi quan trọng nhất vẫn bị bỏ ngỏ. Khi code đổi, comment dễ bị quên cập nhật và gây hiểu nhầm logic.
 
 **Kết quả:** Cả 2 cách đều gây khó khăn khi bảo trì và làm việc nhóm.
 
@@ -225,11 +240,26 @@ Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự
     - **Cái gì?** → Nói lại ý nghĩa logic code khi nhìn vào code thì dễ dàng nhận biết → dư thừa
         
         ```jsx
-        
-        // ❌ Comment lặp lại code — đọc code cũng biết điều này
-        // Kiểm tra đơn hàng có giá trên 500k hay không
-        if (order.total >= 500000) {
-          order.total = order.total * 0.93;
+        // ❌ Comment lặp lại code — đọc code cũng hiểu
+        function calculateShippingFee(order) {
+          // Lọc sản phẩm vật lý, bỏ qua sản phẩm số
+          const physicalItems = order.items.filter(item => item.type !== 'digital');
+
+          // Nếu không có sản phẩm vật lý thì phí là 0
+          if (physicalItems.length === 0) return 0;
+
+          // Tính tổng cân nặng của đơn hàng
+          const totalWeight = physicalItems.reduce((sum, item) => sum + item.weight * item.qty, 0);
+          // Tính phí vận chuyển theo cân nặng
+          const baseFee = totalWeight <= 3 ? 25000 : 25000 + Math.ceil((totalWeight - 3) / 0.5) * 3000;
+
+          // Nếu là HCM và giao hàng nhanh thì nhân phí lên
+          if (order.province === 'HCM' && order.shippingMethod === 'express') {
+            return baseFee * 1.5;
+          }
+
+          // Trả về phí vận chuyển
+          return baseFee;
         }
         ```
         
@@ -237,10 +267,26 @@ Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự
         
         ```jsx
         // ✅ Comment giải thích tại sao (điều code không nói được)
-        // Giảm 7% theo hợp đồng khuyến mãi Q1/2025 với đối tác logistics.
-        // Ngưỡng 500k là điều kiện tối thiểu theo thỏa thuận — không tự ý thay đổi.
-        if (order.total >= 500000) {
-          order.total = order.total * 0.93;
+        function calculateShippingFee(order) {
+          const physicalItems = order.items.filter(item => item.type !== 'digital');
+
+          if (physicalItems.length === 0) return 0;
+
+          const totalWeight = physicalItems.reduce((sum, item) => sum + item.weight * item.qty, 0);
+
+          // Theo phụ lục hợp đồng GHN 2025-01:
+          // - 25.000đ cho 3kg đầu
+          // - Mỗi 0.5kg vượt thêm 3.000đ
+          // Không tự ý đổi nếu chưa cập nhật bảng phí từ đối tác.
+          const baseFee = totalWeight <= 3 ? 25000 : 25000 + Math.ceil((totalWeight - 3) / 0.5) * 3000;
+
+          // Ngoại lệ tạm thời cho chiến dịch HCM Express (CRM-482), hiệu lực đến 2026-06-30.
+          // Sau mốc này phải bỏ hệ số 1.5.
+          if (order.province === 'HCM' && order.shippingMethod === 'express') {
+            return baseFee * 1.5;
+          }
+
+          return baseFee;
         }
         ```
         
@@ -349,6 +395,7 @@ Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự
           // ...
         }
         ```
+        
 
 ### Kết clip
 
@@ -356,3 +403,33 @@ Comment ở đây **dư thừa** vì nội dung code đã rõ ràng (đều tự
 - **Bài học chính:** Áp dụng "Clean Code tối thiểu" khi gấp, sau đó "hoàn trả nợ kỹ thuật" khi có thời gian — giúp vừa đảm bảo tiến độ vừa giữ được chất lượng codebase lâu dài.
 - **Viễn cảnh thành công:** Khi cả team hiểu được sự cân bằng này, code vừa dễ đọc, deadline được đảm bảo, và mỗi người làm việc với ít áp lực hơn.
 - **Điểm cốt lõi:** Clean Code mà là một **quá trình cải thiện liên tục**, từng bước nhỏ, tích lũy dần → dẫn đến một mã nguồn vững chắc và bền vững theo thời gian.
+
+---
+
+**Folder: Clip_07**
+
+## 7. Viễn Cảnh Thành Công & Ngã Rẽ Quyết Định
+
+### Viễn cảnh thành công
+
+**Viễn cảnh thành công khi áp dụng đúng nguyên tắc Clean Code:**
+
+- Đọc code dễ dàng, Không còn sợ khi nhìn lại code cũ → thời gian sửa lỗi và bảo trì nhanh hơn.
+- Bug giảm đáng kể vì code rõ ràng, dễ kiểm soát.
+- Code của bạn được đồng nghiệp khen "dễ đọc, dễ hiểu"
+- Sếp tin tưởng giao những task quan trọng → sự nghiệp thăng tiến (lên chức, lên lương).
+
+### Ngã rẽ quyết định (The Crossroads)
+
+**Nhưng nếu bạn KHÔNG thay đổi và giữ thói quen code như cũ → hậu quả lâu dài nếu không thay đổi:**
+
+- Mãi mãi Stress vì code bẩn → bug nhiều → bị sếp/đồng nghiệp phàn nàn.
+- Sự nghiệp không thăng tiến → Mức lương tăng chậm, kém xa đồng nghiệp đồng trang lứa.
+- Không dám nhận task khó vì thiếu tự tin.
+
+**Nếu lựa chọn thay đổi →  LetDiv là lựa chọn an toàn và phù hợp nhất:**
+
+- Mô hình 1-1, mentor đánh giá từng dòng code → Cải thiện kỹ năng code ngay lập tức → bạn biết mình đúng hoặc sai ở đâu.
+- Học theo tiến độ riêng → học chậm → không cần lo lắng không theo kịp chương trình, giảng viên sẽ đi chậm cùng bạn để đảm bảo bạn nắm chắc 100% kiến thức. Nếu học nhanh → có thể nhanh chóng kết thúc chương trình.
+
+→ CTA đến khóa học tại mô tả hoặc bình luận.
