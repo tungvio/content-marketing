@@ -10,14 +10,23 @@ Nhưng rồi lãi suất tăng. Các nhà đầu tư ngừng việc ném tiền 
 
 ## AI thực sự là gì trong tay bạn
 
-Vậy nếu AI không cướp việc của chúng ta, thì vai trò thực sự của nó là gì? Để tôi thành thật với bạn, cách tôi làm việc hôm nay khác hoàn toàn so với một thập kỷ trước.
-Ngày xưa, nếu code bị lỗi, tôi sẽ Google dòng thông báo lỗi đó, mở 5 tab Stack Overflow, đọc mớ bình luận hỗn độn, thử ba cách khác nhau và cầu nguyện một trong số đó sẽ hoạt động. Đôi khi, mất cả nửa ngày chỉ để sửa một cái lỗi cỏn con. Còn hôm nay? Tôi nén lỗi đó ném cho AI. Nó giải thích chính xác vấn đề ở đâu, gợi ý cách sửa, thậm chí viết lại luôn hàm đó cho tôi. Việc từng mất một tiếng đồng hồ nay chỉ mất 5 phút với nỗ lực gần như bằng không.
-Đây không phải là sự thay thế. Đây là sự nhân bội sức mạnh. AI không lấy đi công việc của tôi, nó làm cho luồng công việc của tôi nhanh hơn, mượt hơn và thú vị hơn. Có một sự thật mà ít người mới vào nghề nhận ra: Bạn càng có nhiều kinh nghiệm, AI trong tay bạn càng trở nên mạnh mẽ. Bởi vì bạn biết mình nên chấp nhận cái gì, nên từ chối cái gì, bạn biết khi nào AI nói đúng, và quan trọng nhất, bạn nhận ra ngay khi nào nó đang bịa chuyện.
+Vậy nếu AI không cướp việc của chúng ta, thì vai trò thực sự của nó là gì? Để tôi thành thật với bạn — cách tôi làm việc hôm nay khác hoàn toàn so với một thập kỷ trước.
+
+Ngày xưa, nếu code bị lỗi, tôi sẽ Google thông báo lỗi đó, mở 5 tab Stack Overflow, đọc mớ bình luận hỗn độn, thử ba cách khác nhau và cầu nguyện một trong số đó sẽ hoạt động. Đôi khi mất cả nửa ngày chỉ để sửa một cái lỗi cỏn con. Còn hôm nay? Tôi ném lỗi đó cho AI. Nó giải thích vấn đề ở đâu, gợi ý cách sửa, thậm chí viết lại luôn hàm đó. Việc từng mất một tiếng nay chỉ mất 5 phút.
+
+Đây không phải là sự thay thế. Đây là sự nhân bội sức mạnh. AI không lấy đi công việc của tôi — nó làm cho luồng công việc của tôi nhanh hơn, mượt hơn và thú vị hơn.
+
+Có một sự thật mà ít người mới vào nghề nhận ra: bạn càng có nhiều kinh nghiệm, AI trong tay bạn càng mạnh. Bởi vì bạn biết nên chấp nhận cái gì, từ chối cái gì, bạn biết khi nào AI nói đúng, và quan trọng nhất — bạn nhận ra ngay khi nào nó đang bịa chuyện.
 
 ## Kỹ sư phần mềm là người đưa ra quyết định
 
-Sundar Pichai — CEO Google — xác nhận hơn 25% code mới tại Google hiện do AI tạo ra. Nghe có vẻ đáng sợ, nhưng hãy phân tích kỹ: AI cực kỳ xuất sắc trong việc viết những đoạn code lặp đi lặp lại (boilerplate), các hàm hỗ trợ nhỏ, viết test, hay tái cấu trúc (refactor) code. Nhưng kỹ sư phần mềm chưa bao giờ chỉ là những người "gõ phím". Kỹ sư phần mềm là những người đưa ra quyết định.
-Bạn phải quyết định xem hệ thống này nên được cấu trúc như thế nào. Logic này nên đặt ở đâu. Hệ thống sẽ mở rộng quy mô ra sao. Điều gì xảy ra nếu lưu lượng truy cập tăng vọt? Điều gì xảy ra nếu app bị tấn công? Ví dụ, AI có thể viết cho bạn một thanh công cụ tìm kiếm cực kỳ mượt mà. Test trên máy bạn với 3 người dùng, nó chạy hoàn hảo. Nhưng AI có thể đã viết nó theo cách gửi truy vấn trực tiếp vào database mỗi khi người dùng gõ một chữ cái. Khi bạn đưa nó lên production và có 1000 người dùng cùng lúc, server của bạn sẽ sập ngay lập tức. Tính năng đó không sai, nhưng nó không được thiết kế để mở rộng quy mô. AI có thể đưa ra gợi ý, nhưng con người mới là người chốt quyết định cuối cùng.
+Sundar Pichai — CEO Google — xác nhận hơn 25% code mới tại Google hiện do AI tạo ra. Nghe có vẻ đáng sợ, nhưng hãy nhìn kỹ hơn: AI rất giỏi những việc lặp đi lặp lại — viết boilerplate, các hàm nhỏ, test, refactor. Những việc tẻ nhạt mà không ai thích làm.
+
+Nhưng kỹ sư phần mềm chưa bao giờ chỉ là người gõ phím. Kỹ sư phần mềm là người đưa ra quyết định.
+
+Hệ thống này nên được cấu trúc thế nào? Logic này nên đặt ở đâu? Điều gì xảy ra khi traffic tăng vọt? Điều gì xảy ra nếu app bị tấn công?
+
+Lấy ví dụ: AI có thể viết cho bạn một thanh tìm kiếm cực kỳ mượt mà. Test trên máy với 3 người dùng, nó chạy hoàn hảo. Nhưng bên dưới, AI đã viết nó theo cách gửi truy vấn thẳng vào database mỗi khi người dùng gõ một chữ cái. Khi lên production với 1000 người dùng cùng lúc, server sập ngay. Tính năng không sai — nhưng không được thiết kế để scale. AI có thể gợi ý, nhưng con người mới là người chịu trách nhiệm cuối cùng.
 
 ## Cái bẫy mà không ai cảnh báo bạn
 
@@ -34,12 +43,14 @@ Với AI, việc copy một thứ gì đó hoạt động mà không cần hiể
 Vậy còn câu chuyện "Fresher và Junior không thể tìm được việc"? Đúng, thị trường entry-level đang đi xuống. Nhưng điều này đã từng xảy ra trước khi AI xuất hiện. Trong thời kỳ kinh tế khó khăn, các công ty trở nên bảo thủ. Họ ngại rủi ro, và đào tạo một Junior là một khoản đầu tư mang tính rủi ro. Tuy nhiên, sự xuất hiện của AI đã thay đổi bản chất của công việc Junior. Trước đây, các Junior thường bắt đầu bằng việc viết những đoạn code đơn giản, lặp đi lặp lại. Giờ đây, AI làm việc đó trong một giây. Vậy giá trị của bạn nằm ở đâu? Nó nằm ở tư duy, khả năng gỡ lỗi và sự nắm vững các nền tảng căn bản.
 
 Một Junior biết đặt câu hỏi "tại sao code này hoạt động?" thay vì chỉ hài lòng vì "code này chạy" — người đó sẽ sống sót qua mọi thế hệ công cụ.
-Những lập trình viên đi đường tắt, học vẹt qua tutorial, chỉ biết copy-paste AI sẽ bị đào thải. Những người bình tĩnh, tập trung đào sâu vào bản chất của vấn đề, hiểu rõ kiến trúc hệ thống, sẽ vượt qua mọi chu kỳ cường điệu của thị trường.
+
+Những lập trình viên đi đường tắt, học vẹt qua tutorial, chỉ biết copy-paste AI sẽ bị đào thải. Những người bình tĩnh, chịu đào sâu vào bản chất của vấn đề, hiểu rõ kiến trúc hệ thống — sẽ vượt qua mọi chu kỳ hype của thị trường.
 
 ## Kỷ nguyên của kỹ sư thấu đáo
 
-Chúng ta không còn sống trong kỷ nguyên của lập trình viên 10x — những người gõ code nhanh như máy nữa. Chúng ta đang bước vào kỷ nguyên của kỹ sư thấu đáo. Sự thấu đáo không đến từ việc gõ prompt, nó đến từ việc rèn luyện não bộ.
-Tôi muốn thách thức các bạn: Trong tuần này, hãy lấy một tính năng nhỏ mà bạn vừa dùng AI để tạo ra. Xóa sạch nó đi. Và tự tay code lại từ đầu đến cuối mà không dùng đến AI. Bạn có quyền đọc tài liệu, bạn có quyền suy nghĩ đến nát óc, bạn có quyền bế tắc. Nếu sau đó, bạn có thể tự tin giải thích từng dòng code mà bạn vừa viết ra, thì xin chúc mừng, bạn đang học đúng cách.
+Chúng ta không còn sống trong kỷ nguyên của lập trình viên 10x — những người gõ code nhanh như máy nữa. Chúng ta đang bước vào kỷ nguyên của kỹ sư thấu đáo. Sự thấu đáo không đến từ việc gõ prompt — nó đến từ việc rèn luyện não bộ.
+
+Tôi muốn thách thức bạn: tuần này, hãy lấy một tính năng nhỏ mà bạn vừa dùng AI để tạo ra. Xóa sạch nó đi. Tự tay code lại từ đầu, không dùng AI. Bạn được đọc tài liệu, được suy nghĩ đến nát óc, được bế tắc. Nếu sau đó bạn có thể tự tin giải thích từng dòng mình vừa viết — bạn đang học đúng cách.
 Trong 5 năm tới, AI chắc chắn sẽ thông minh hơn rất nhiều. Công cụ sẽ mạnh hơn, tốc độ sẽ nhanh hơn. Nhưng chính vì vậy, khoảng cách giữa người thực sự hiểu và người chỉ biết dùng sẽ ngày càng lớn hơn — không phải nhỏ hơn.
 
 Câu hỏi không phải "AI có thay thế lập trình viên không?" — câu hỏi đó đã có câu trả lời rồi. Câu hỏi thực sự là: khi AI viết code cho bạn, bạn đang trở nên giỏi hơn — hay chỉ đang trở nên nhanh hơn?
